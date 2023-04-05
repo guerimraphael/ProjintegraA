@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Status</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <h1>Status dos Livros</h1>
+  <table id="tabelaStatus">
+    <thead>
+      <tr>
+        <th>Livro</th>
+        <th>Autor</th>
+        <th>Ano</th>
+        <th>Páginas</th>
+        <th>Data de Cadastro</th>
+        <th>Já li</th>
+        <th>Status</th>
+        <th>Alterar</th> <!-- Botão de Alterar -->
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <button onclick="limparDados()">Limpar Dados</button>
+
+  <script>
+    function limparDados() {
+      // Limpar a lista de livros do local storage
+      localStorage.removeItem('livros');
+
+      // Redirecionar para a página inicial (ou outra página desejada)
+      window.location.href = "index.html";
+    }
+
+    // Recuperar a lista de livros da URL
+    let urlParams = new URLSearchParams(window.location.search);
+    let livrosJSON = urlParams.get('livros');
+    let livros = JSON.parse(decodeURIComponent(livrosJSON));
+
+    // Exibir os dados da lista de livros na tabela
+    let tabela = document.getElementById("tabelaStatus").getElementsByTagName("tbody")[0];
+
+    for (let i = 0; i < livros.length; i++) {
+      let livro = livros[i];
+
+      let linha = tabela.insertRow();
+      let colunaLivro = linha.insertCell(0);
+      let colunaAutor = linha.insertCell(1);
+      let colunaAno = linha.insertCell(2);
+      let colunaPaginas = linha.insertCell(3);
+      let colunaDataCadastro = linha.insertCell(4);
+      let colunaJali = linha.insertCell(5);
+      let colunaStatus = linha.insertCell(6);
+      let colunaAlterar = linha.insertCell(7); // Coluna do botão Alterar
+
+      colunaLivro.innerHTML = livro.livro;
+      colunaAutor.innerHTML = livro.autor;
+      colunaAno.innerHTML = livro.ano;
+      colunaPaginas.innerHTML = livro.paginas;
+      colunaDataCadastro.innerHTML = livro.dataCadastro;
+      colunaJali.innerHTML = livro.jaLi;
+      colunaStatus.innerHTML = livro.status;
+
+      // Criação do botão Alterar
+      let botaoAlterar = document.createElement("button");
+      botaoAlterar.textContent = "Alterar";
+      botaoAlterar.onclick = function() {
+        // Altera o valor de "Já li" quando o botão for clicado
+        if (livro.jaLi === "Sim") {
+          livro.jaLi = "Não";
+        } else {
+          livro.jaLi = "Sim";
+        }
+        colunaJali.innerHTML = livro.jaLi;
+      };
+
+      colunaAlterar.appendChild(botaoAlterar);
+    }
+  </script>
+</body>
+</html>
