@@ -1,131 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Meus Livros</title>
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
    <link rel="stylesheet" href="estilo.css">
 
 </head>
 <body>
-  <h1>Meus Livros</h1>
-  <form id="formLivro">
-    <label for="livro">Livro:</label>
-    <input type="text" id="livro">
-    <label for="autor">Autor:</label>
-    <input type="text" id="autor">
-    <label for="ano">Ano:</label>
-    <input type="number" id="ano">
-    <label for="paginas">Páginas:</label>
-    <input type="number" id="paginas">
-    <label for="quantidade">Quantidade de livros a ler no ano:</label>
-    <input type="number" id="quantidade">
-    <button type="button" onclick="adicionarLivro()">Cadastrar livro</button>
-    <button type="button" onclick="limparCadastro()">Limpar cadastro</button>
-    <button type="button" onclick="confirmarCadastro()">Confirmar cadastro</button>
-  </form>
-
-  <table id="tabelaLivros">
-    <thead>
-      <tr>
-        <th>Livro</th>
-        <th>Autor</th>
-        <th>Ano</th>
-        <th>Páginas</th>
-        <th>Data de Cadastro</th>
-        <th>Ações</th> <!-- nova coluna para ações -->
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-
-  <script>
-    let livros = [];
-
-    function adicionarLivro() {
-      let livro = document.getElementById("livro").value;
-      let autor = document.getElementById("autor").value;
-      let ano = document.getElementById("ano").value;
-      let paginas = document.getElementById("paginas").value;
-      let quantidade = document.getElementById("quantidade").value;
-      let dataCadastro = new Date().toLocaleDateString();
-
-      if (livros.length >= quantidade) {
-        alert("Quantidade máxima de livros atingida.");
-        return;
-      }
-
-        // verifica se já existe um livro com o mesmo nome
-    for (let i = 0; i < livros.length; i++) {
-      if (livros[i].livro === livro) {
-      alert("Já existe um livro com esse nome.");
-      return;
-      }
-    }
-
-      livros.push({
-        livro: livro,
-        autor: autor,
-        ano: ano,
-        paginas: paginas,
-        quantidade: quantidade,
-        dataCadastro: dataCadastro
-      });
-
-      atualizarTabela();
-    }
-
-    function atualizarTabela() {
-      let tabela = document.getElementById("tabelaLivros").getElementsByTagName("tbody")[0];
-      tabela.innerHTML = "";
-
-      for (let i = 0; i < livros.length; i++) {
-        let livro = livros[i];
-
-        let linha = tabela.insertRow();
-        let colunaLivro = linha.insertCell(0);
-        let colunaAutor = linha.insertCell(1);
-        let colunaAno = linha.insertCell(2);
-        let colunaPaginas = linha.insertCell(3);
-        let colunaDataCadastro = linha.insertCell(4);
-        let colunaAcoes = linha.insertCell(); // nova coluna para ações
-
-        colunaLivro.innerHTML = livro.livro;
-        colunaAutor.innerHTML = livro.autor;
-        colunaAno.innerHTML = livro.ano;
-        colunaPaginas.innerHTML = livro.paginas;
-        colunaDataCadastro.innerHTML = livro.dataCadastro;
 
 
-    // botão de exclusão
-    let botaoExcluir = document.createElement("button");
-    botaoExcluir.innerHTML = "Excluir";
-    botaoExcluir.addEventListener("click", function() {
-      livros.splice(i, 1); // remove o livro da lista de livros
-      atualizarTabela(); // atualiza a tabela
-    });
-    colunaAcoes.appendChild(botaoExcluir);
-      }
-    }
+	<form>
+		<h3>LOGIN</h3>
+		<input type="text" placeholder=" Login" id="login">
+		<input type="password" placeholder="Senha" id="senha">
+		<input type="submit" onclick="logar(); return false">
+	</form>
 
 
-    // botão de limpar
-    function limparCadastro() {
-      document.getElementById("livro").value = "";
-      document.getElementById("autor").value = "";
-      document.getElementById("ano").value = "";
-      document.getElementById("paginas").value = "";
-      document.getElementById("quantidade").value = "";
-    }
+	<script>
+		function logar(){
 
-function confirmarCadastro() {
-  // Codificar a lista de livros em formato JSON
-  let livrosJSON = JSON.stringify(livros);
-  
-  // Redirecionar para a página status.html com a lista de livros como parâmetro na URL
-  window.location.href = "status.html?livros=" + encodeURIComponent(livrosJSON);
-}
+			var login = document.getElementById('login').value;
+			var senha = document.getElementById('senha').value;
 
-  </script>
+			if (login =='admin' && senha =='admin'){
+				location.href = 'cadivros.html';
+			}else{
+				alert('Usuário ou senha errado!!!');
+			}
+		}
+	</script>
+	
+
 </body>
 </html>
