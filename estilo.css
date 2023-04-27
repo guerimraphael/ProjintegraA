@@ -1,13 +1,20 @@
-  body {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-h1 {
-  text-align: center;
-font-size: 2rem;
-margin-bottom: 1rem;
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
+h1{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 form {
   margin: 0 auto;
   max-width: 500px;
@@ -18,19 +25,29 @@ form {
   }
 
 label {
-display: block;
-margin-right: 1rem;
-margin-bottom: 0.5rem;
+  display: block;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-input[type="text"], input[type="number"] {
-padding: 0.5rem;
-margin-right: 1rem;
-margin-bottom: 0.5rem;
-border: 1px solid #ccc;
-border-radius: 4px;
-font-size: 1rem;
-width: 200px;
+input[type="text"], input[type="number"], input[type="password"]  {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+input[type="submit"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 button {
@@ -50,24 +67,24 @@ table {
 }
 
 th, td {
-border: 1px solid black;
-padding: 8px;
+  border: 1px solid black;
+  padding: 8px;
 }
 
 th {
-background-color: #4CAF50;
-color: white;
+  background-color: #4CAF50;
+  color: white;
 }
 
 td:last-child {
-text-align: center;
+  text-align: center;
 }
 
 button.excluir {
-padding: 0.5rem;
-border: none;
-background-color: #f44336;
-color: white;
-font-size: 1rem;
-cursor: pointer;
+  padding: 0.5rem;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
