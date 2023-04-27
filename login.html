@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+   <link rel="stylesheet" href="estilo.css">
+
+</head>
+<body>
+
+
+	<form>
+		<h3>LOGIN</h3>
+		<input type="text" placeholder=" Login" id="login">
+		<input type="password" placeholder="Senha" id="senha">
+		<input type="submit" onclick="logar(); return false">
+	</form>
+
+
+	<script>
+		function logar(){
+
+			var login = document.getElementById('login').value;
+			var senha = document.getElementById('senha').value;
+
+			if (login =='admin' && senha =='admin'){
+				location.href = 'index.html';
+			}else{
+				alert('Usuário ou senha errado!!!');
+			}
+		}
+	</script>
+	
+
+</body>
+</html>
